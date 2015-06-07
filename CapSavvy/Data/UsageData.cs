@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace CapSavvy.Data
 {
-    class UsageData
+    public class UsageData
     {
         public UsageDataDetails Peak { get; set; }
         public UsageDataDetails OffPeak { get; set; }

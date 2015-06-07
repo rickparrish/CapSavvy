@@ -25,7 +25,7 @@ using CapSavvy.Data;
 
 namespace CapSavvy.Modules
 {
-    class mod_videotron_tpia : mod_base
+    public class mod_videotron_tpia : mod_base
     {
         public mod_videotron_tpia(UsageData usageData)
             : base(usageData) // Call base constructor

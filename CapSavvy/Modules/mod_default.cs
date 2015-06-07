@@ -23,7 +23,7 @@ using CapSavvy.Data;
 
 namespace CapSavvy.Modules
 {
-    class mod_default : mod_base
+    public class mod_default : mod_base
     {
         public mod_default(UsageData usageData) : base(usageData) { }
 

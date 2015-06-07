@@ -26,7 +26,7 @@ using CapSavvy.Data;
 
 namespace CapSavvy.Modules
 {
-    class mod_start_fdsl : mod_base
+    public class mod_start_fdsl : mod_base
     {
         public mod_start_fdsl(UsageData usageData) : base(usageData) { } // Call base constructor
 

@@ -31,7 +31,7 @@ using System.Collections.Generic;
 
 namespace CapSavvy.Modules
 {
-    abstract class mod_base
+    public abstract class mod_base
     {
         public mod_base(UsageData usageData)
         {

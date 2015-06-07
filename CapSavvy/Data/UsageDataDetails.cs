@@ -23,7 +23,7 @@ using System;
 
 namespace CapSavvy.Data
 {
-    class UsageDataDetails
+    public class UsageDataDetails
     {
         public double Up { get; set; }
         public double Down { get; set; }

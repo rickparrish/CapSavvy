@@ -28,7 +28,7 @@ using CapSavvy.Data;
 
 namespace CapSavvy.Modules
 {
-    class mod_teksavvy : mod_base
+    public class mod_teksavvy : mod_base
     {
         int oidOffset = 0;
 

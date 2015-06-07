@@ -25,7 +25,7 @@ using CapSavvy.Data;
 
 namespace CapSavvy.Modules
 {
-    class mod_ebox_res_dsl : mod_base
+    public class mod_ebox_res_dsl : mod_base
     {
         public mod_ebox_res_dsl(UsageData usageData) : base(usageData) { } // Call base constructor
 
