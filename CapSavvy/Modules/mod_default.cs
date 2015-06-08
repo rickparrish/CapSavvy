@@ -42,6 +42,11 @@ namespace CapSavvy.Modules
             get { return true; }
         }
 
+        public override bool tracksUploads
+        {
+            get { return true; } // TODO Defaulting to true to match behaviour before this property was added.  Should confirm what the real value should be
+        }
+
         protected override string GetHTML()
         {
             return string.Empty;
@@ -49,6 +54,8 @@ namespace CapSavvy.Modules
 
         protected override bool ParseHTML(string html)
         {
+            usage.RealTime = false; // TODO Using this as the default to match previous behaviour.  Should be updated to proper value later
+
             usage.All.Down = 0;
             usage.All.Up = 0;
             usage.All.Total = 0;

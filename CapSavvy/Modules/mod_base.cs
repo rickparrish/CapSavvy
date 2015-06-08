@@ -43,6 +43,7 @@ namespace CapSavvy.Modules
         public abstract string moduleName { get; }
         public abstract string validUsernameRegex { get; }
         public abstract bool supportsOffPeak { get; }
+        public abstract bool tracksUploads { get; }
 
         public UsageData usage = new UsageData();
         public int interval = 1800; // Half hour default

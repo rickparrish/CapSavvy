@@ -28,13 +28,28 @@ namespace CapSavvy.Data
         public double Up { get; set; }
         public double Down { get; set; }
         public double Total { get; set; }
-        public double UpPredicted { get { return Up == 0 || DateTime.Now.Day == 1 ? 0 : Up / (Convert.ToDouble(DateTime.Now.Day - 1) / DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)); } }
-        public double DownPredicted { get { return Down == 0 || DateTime.Now.Day == 1 ? 0 : Down / (Convert.ToDouble(DateTime.Now.Day - 1) / DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)); } }
-        public double TotalPredicted { get { return Total == 0 || DateTime.Now.Day == 1 ? 0 : Total / (Convert.ToDouble(DateTime.Now.Day - 1) / DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)); } }
+        public double UpAverage { get { return GetAverage(Up); } }
+        public double DownAverage { get { return GetAverage(Down); } }
+        public double TotalAverage { get { return GetAverage(Total); } }
+        public double UpPredicted { get { return UpAverage * DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); } }
+        public double DownPredicted { get { return DownAverage * DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); } }
+        public double TotalPredicted { get { return TotalAverage * DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); } }
+        public bool RealTime { get; set; }
 
         public UsageDataDetails()
         {
             Up = Down = Total = 0;
+        }
+
+        private double GetAverage(double amount)
+        {
+            if (amount <= 0) {
+                return 0;
+            } else if ((DateTime.Now.Day == 1) && (!RealTime)) {
+                return 0;
+            } else {
+                return amount / (DateTime.Now.Day - 1 + (RealTime ? ((double)DateTime.Now.Hour / 24.0) + ((double)DateTime.Now.Minute / 1440.0) : 0));
+            }
         }
     } 
 }

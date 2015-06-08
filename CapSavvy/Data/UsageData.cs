@@ -26,12 +26,22 @@ namespace CapSavvy.Data
         public UsageDataDetails Peak { get; set; }
         public UsageDataDetails OffPeak { get; set; }
         public UsageDataDetails All { get; set; }
+        public bool RealTime
+        {
+            set
+            {
+                Peak.RealTime = value;
+                OffPeak.RealTime = value;
+                All.RealTime = value;
+            }
+        }
 
         public UsageData()
         {
             Peak = new UsageDataDetails();
             OffPeak = new UsageDataDetails();
             All = new UsageDataDetails();
+            RealTime = false;
         }
     }
 }

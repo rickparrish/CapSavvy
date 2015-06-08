@@ -45,6 +45,11 @@ namespace CapSavvy.Modules
             get { return false; }
         }
 
+        public override bool tracksUploads
+        {
+            get { return true; } // TODO Defaulting to true to match behaviour before this property was added.  Should confirm what the real value should be
+        }
+
         protected override string GetHTML()
         {
             return GetHTTP("www.caneris.com", 80, "/Usage?", "acctnum=" + _username + "&y=" + DateTime.Now.Year.ToString() + "&m=" + DateTime.Now.Month.ToString());
@@ -59,6 +64,8 @@ namespace CapSavvy.Modules
 
             if (match.Success)
             {
+                usage.RealTime = false; // TODO Using this as the default to match previous behaviour.  Should be updated to proper value later
+
                 usage.All.Down = Convert.ToDouble(match.Groups[1].Value);
                 usage.All.Up = Convert.ToDouble(match.Groups[2].Value);
                 usage.All.Total = Convert.ToDouble(match.Groups[3].Value);

@@ -45,6 +45,11 @@ namespace CapSavvy.Modules
             get { return true; }
         }
 
+        public override bool tracksUploads
+        {
+            get { return false; }
+        }
+
         protected override string GetHTML()
         {
             return GetHTTP("www.start.ca", 80, "/support/capsavvy?code=" + _username);
@@ -93,6 +98,8 @@ namespace CapSavvy.Modules
 
             if (matchSuccess)
             {
+                usage.RealTime = true;
+
                 usage.Peak.Down = Convert.ToDouble(usagePairs["DL"]) / 1000000000;
                 usage.Peak.Up = Convert.ToDouble(usagePairs["UL"]) / 1000000000;
                 usage.Peak.Total = Convert.ToDouble(usagePairs["TOTAL"]) / 1000000000;

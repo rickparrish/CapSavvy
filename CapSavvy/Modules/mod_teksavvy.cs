@@ -49,6 +49,11 @@ namespace CapSavvy.Modules
             get { return true; }
         }
 
+        public override bool tracksUploads
+        {
+            get { return true; } // TODO Defaulting to true to match behaviour before this property was added.  Should confirm what the real value should be
+        }
+
         protected override string GetHTML()
         {
             // We know the match will succeed, since we had to validate the username to get here.
@@ -82,6 +87,8 @@ namespace CapSavvy.Modules
                 // oidOffset is kind of a kludge to support the few people with multiple OIDs
                 var value = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(html)["value"] as ArrayList;
                 var usageRecord = value[oidOffset] as Dictionary<string, object>;
+
+                usage.RealTime = false; // TODO Using this as the default to match previous behaviour.  Should be updated to proper value later
 
                 usage.Peak.Down = Convert.ToDouble(usageRecord["OnPeakDownload"]);
                 usage.Peak.Up = Convert.ToDouble(usageRecord["OnPeakUpload"]);
