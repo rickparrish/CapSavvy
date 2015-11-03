@@ -107,6 +107,8 @@ namespace CapSavvy.Modules
             {
                 WebRequest https = HttpWebRequest.Create(new Uri(url));
 
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
                 if (headerList != null)
                 {
                     foreach (KeyValuePair<string, string> header in headerList)
